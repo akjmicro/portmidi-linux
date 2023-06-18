@@ -7,7 +7,7 @@ the `busybox-gcc` containers didn't seem to have `cmake` in their package-manage
 which, unfortunately, `portmidi` officially depends on to build.
 
 So, being crazy, you decide to bypass `cmake` and make a simple `Makefile` build of `portmidi` using clues
-derived from waht `cmake` actually does via the compiler by putting `cmake` into verbose-output mode.
+derived from what `cmake` actually does via the compiler by putting `cmake` into verbose-output mode.
 
 Well, maybe this helps you, or maybe I'm the only fool needing this.
 

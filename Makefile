@@ -15,7 +15,7 @@
 CC = gcc
 CFLAGS = -DPMALSA -Dportmidi_EXPORTS -O3 -DNDEBUG -fPIC
 SOFLAGS = -fPIC -O3 -DNDEBUG -shared -Wl,-soname,libportmidi.so.2
-LDFLAGS = -pthread
+LDFLAGS = -lasound -pthread
 OBJECTS = portmidi.o pmutil.o porttime.o ptlinux.c pmlinux.o pmlinuxnull.o pmlinuxalsa.o
 LIBSOOBJ = libportmidi.so.2.0.4
 LIBSOOBJ_SHORT = libportmidi.so.2
@@ -31,7 +31,7 @@ default: libportmidi.so.2.0.4
 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ -c $<
 
 libportmidi.so.2.0.4: $(OBJECTS)
-	$(CC) $(SOFLAGS) -o $@ $(OBJECTS) /usr/lib/x86_64-linux-gnu/libasound.so $(LDFLAGS)
+	$(CC) $(SOFLAGS) -o $@ $(OBJECTS) $(LDFLAGS)
 
 install: libportmidi.so.2.0.4
 	sudo cp -a $(HEADERS) $(PREFIX)/include
@@ -41,4 +41,4 @@ install: libportmidi.so.2.0.4
 	sudo ldconfig
 
 clean:
-	rm -rf *.o *.so
+	rm -rf *.o *.so.* *.a

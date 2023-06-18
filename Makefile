@@ -34,11 +34,11 @@ libportmidi.so.2.0.4: $(OBJECTS)
 	$(CC) $(SOFLAGS) -o $@ $(OBJECTS) $(LDFLAGS)
 
 install: libportmidi.so.2.0.4
-	sudo cp -a $(HEADERS) $(PREFIX)/include
-	sudo cp -a $(LIBSOOBJ) $(PREFIX)/lib
-	sudo ln -s $(PREFIX)/lib/$(LIBSOOBJ) $(PREFIX)/lib/$(LIBSOOBJ_SHORT)
-	sudo ln -s $(PREFIX)/lib/$(LIBSOOBJ) $(PREFIX)/lib/$(LIBSOOBJ_MINI)
-	sudo ldconfig
+	cp -a $(HEADERS) $(PREFIX)/include
+	cp -a $(LIBSOOBJ) $(PREFIX)/lib
+	ln -s $(PREFIX)/lib/$(LIBSOOBJ) $(PREFIX)/lib/$(LIBSOOBJ_SHORT)
+	ln -s $(PREFIX)/lib/$(LIBSOOBJ) $(PREFIX)/lib/$(LIBSOOBJ_MINI)
+	ldconfig
 
 clean:
 	rm -rf *.o *.so.* *.a
